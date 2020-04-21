@@ -1,19 +1,22 @@
 file_name = input("What would you like to name your new file? ")
+def add_title():
+    title = input("What would you like to show up in your browser tab? ")
+    title = f"<title>{title}</title>"
+    return title
 
 def file_creator(file):
     if not file.__contains__('.html'):
         file = file.__add__('.html')
-    
+    title = add_title()
     html_format = """<!DOCTYPE html>
     <html>
         <head>
-                       
+            %s               
         </head>
         <body>
-
         </body>
     </html>
-    """
+    """ % title
    
     try:                   
         with open(file, 'x+') as new_html:
@@ -39,4 +42,4 @@ def file_creator(file):
         else:
             print("Sorry, I am not smart enough to understand your input yet. Soon I shall be though.")
 
-file_creator(file_name)    
+file_creator(file_name) 
